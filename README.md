@@ -80,3 +80,9 @@ INSERT INTO `user_table`(`user_id`, `user_name`, `user_password`, `user_note`) V
 ```
 sudo apt install php libapache2-mod-php php-mysql
 ```
+
+## 下載 html.zip
+
+放到 /var/www/html
+
+利用  nautilus 改
