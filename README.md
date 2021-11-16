@@ -14,7 +14,7 @@ $ sudo systemctl status apache2
 ## 安裝MySQL
 執行
 
-$ sudo apt install mysql-server
+/opt/lampp/bin/mysql -u root
 
 設定MySQL root user的密碼：
 
