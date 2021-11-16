@@ -22,7 +22,12 @@ sudo mysql_secure_installation
 
 改 root 密碼
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'rootroot';
+$ /opt/lampp/bin/mysql -u root
+
+> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'rootroot';
+
+> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('rootroot');
+
 
 ### 建db
 
@@ -45,16 +50,16 @@ CREATE TABLE `item` (
 * item 資料
 ```
 INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (1,'小李飛刀',100,323),
-(`id`, `name`, `attack`, `defense`) VALUES (2,'屠龍刀',200,40),
-(`id`, `name`, `attack`, `defense`) VALUES (3,'桃園盾',20,500),
-(`id`, `name`, `attack`, `defense`) VALUES (4,'倚天劍',100,100),
-(`id`, `name`, `attack`, `defense`) VALUES (5,'晨星虎斧',318,407),
-(`id`, `name`, `attack`, `defense`) VALUES (6,'封魔流星破',247,50),
-(`id`, `name`, `attack`, `defense`) VALUES (7,'霸虎風魔斬',469,54),
-(`id`, `name`, `attack`, `defense`) VALUES (8,'修羅鬼噬爪',464,415),
-(`id`, `name`, `attack`, `defense`) VALUES (9,'鬼噬日暮滅',327,401),
-(`id`, `name`, `attack`, `defense`) VALUES (10,'洪流鳳火舞',378,485),
-(`id`, `name`, `attack`, `defense`) VALUES (100,'彥宇大悲咒',2000,0);
+(2,'屠龍刀',200,40),
+(3,'桃園盾',20,500),
+(4,'倚天劍',100,100),
+(5,'晨星虎斧',318,407),
+(6,'封魔流星破',247,50),
+(7,'霸虎風魔斬',469,54),
+(8,'修羅鬼噬爪',464,415),
+(9,'鬼噬日暮滅',327,401),
+(10,'洪流鳳火舞',378,485),
+(100,'彥宇大悲咒',2000,0);
 ```
 
 * 創table user_table
