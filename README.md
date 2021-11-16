@@ -80,11 +80,6 @@ CREATE TABLE `user_table` (
 INSERT INTO `user_table`(`user_id`, `user_name`, `user_password`, `user_note`) VALUES(1,'admin','admin','root')
 ```
 
-## php
-
-```
-sudo apt install php libapache2-mod-php php-mysql
-```
 
 ## 下載 html.zip
 
@@ -102,11 +97,6 @@ Owner: mysql   C&D
 Group: mysql   C&D
 other:         C&D
 
-修改outfile問題
-
-SHOW GLOBAL VARIABLES LIKE '%secure%';
-sudo find /* -name my.cnf
-secure-file-priv = "/"
 
 
 sudo nano /etc/apparmor.d/local/usr.sbin.mysqld 
